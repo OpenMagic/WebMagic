@@ -12,14 +12,42 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E14112
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{788A8AD3-DFD0-417F-96C1-C72F24A5F154}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMagic.Specifications", "Projects\WebMagic.Specifications\WebMagic.Specifications.csproj", "{E498C5AF-ED0E-452E-8067-2CF637CAA791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdown.EmptyAspNetWebApplication", "Projects\Markdown.EmptyAspNetWebApplication\Markdown.EmptyAspNetWebApplication.csproj", "{5CD92408-3C80-48A1-B6C7-BDF4A9FEC38F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specification Helpers", "Specification Helpers", "{B8775BE4-1C55-40DE-95CA-0EA2BCA59DCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMagic", "Projects\WebMagic\WebMagic.csproj", "{603F544B-FC04-465D-898A-BE2436D3C691}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E498C5AF-ED0E-452E-8067-2CF637CAA791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E498C5AF-ED0E-452E-8067-2CF637CAA791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E498C5AF-ED0E-452E-8067-2CF637CAA791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E498C5AF-ED0E-452E-8067-2CF637CAA791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD92408-3C80-48A1-B6C7-BDF4A9FEC38F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD92408-3C80-48A1-B6C7-BDF4A9FEC38F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD92408-3C80-48A1-B6C7-BDF4A9FEC38F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD92408-3C80-48A1-B6C7-BDF4A9FEC38F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{603F544B-FC04-465D-898A-BE2436D3C691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{603F544B-FC04-465D-898A-BE2436D3C691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{603F544B-FC04-465D-898A-BE2436D3C691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{603F544B-FC04-465D-898A-BE2436D3C691}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E1411234-D871-42F0-A58E-B5E42A8037E6} = {788A8AD3-DFD0-417F-96C1-C72F24A5F154}
+		{5CD92408-3C80-48A1-B6C7-BDF4A9FEC38F} = {B8775BE4-1C55-40DE-95CA-0EA2BCA59DCE}
 	EndGlobalSection
 EndGlobal
