@@ -11,13 +11,13 @@ namespace WebMagic.Specifications.Steps
         private Uri ActualUri;
 
         [When(@"I call Uri\.Combine\((.*), (.*)\)")]
-        public void WhenICallUri_Combine(string uriString, string url)
+        public void WhenICallUri_Combine(string thisUri, string url)
         {
-            ActualUri = new Uri(uriString).Combine(url);
+            ActualUri = new Uri(thisUri).Combine(url);
         }
 
-        [Then(@"the result should be (.*)")]
-        public void ThenTheResultShouldBe(string expectedUri)
+        [Then(@"(.*) Uri should be returned")]
+        public void ThenUriShouldBeReturned(string expectedUri)
         {
             ActualUri.Should().Be(new Uri(expectedUri));
         }

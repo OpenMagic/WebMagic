@@ -99,6 +99,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\String extensions.feature.cs">
+      <DependentUpon>String extensions.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\Uri extensions.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,6 +123,7 @@
       <DependentUpon>Serve markdown files.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\ServeMarkdownFilesSteps.cs" />
+    <Compile Include="Steps\StringExtensionsSteps.cs" />
     <Compile Include="Steps\UriExtensionsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +131,10 @@
     <None Include="Features\Requires WebDriver\Serve markdown files.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Serve markdown files.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\String extensions.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>String extensions.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Uri extensions.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

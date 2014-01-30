@@ -86,7 +86,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 4
  testRunner.When(string.Format("I call Uri.Combine({0}, {1})", uri, url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 5
- testRunner.Then(string.Format("the result should be {0}", expected), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("{0} Uri should be returned", expected), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

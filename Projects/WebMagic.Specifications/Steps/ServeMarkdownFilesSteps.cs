@@ -28,7 +28,7 @@ namespace WebMagic.Specifications.Steps
         [Then(@"the page is rendered with a layout page")]
         public void ThenThePageIsRenderedWithALayoutPage()
         {
-            WebDriver.PageSource.Should().Contain("<html");
+            WebDriver.PageSource.Should().Contain("<title");
         }
     }
 }
