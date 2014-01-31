@@ -25,16 +25,9 @@ namespace WebMagic.Specifications.Infrastructure
             GC.SuppressFinalize(this);
         }
 
-        protected void OpenWebsite(string projectPrefix, string websiteType)
+        protected void OpenWebsite(string websiteName)
         {
-            if (projectPrefix == "Markdown" && websiteType == "Empty ASP.NET Web Application")
-            {
-                Website = new MarkdownEmptyAspNetWebApplication();
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException(string.Format("OpenWebsite(projectPrefix: {0}, websiteType: {1})", projectPrefix, websiteType));
-            }
+            Website = (WebsiteBase)Activator.CreateInstance(this.GetType().Assembly.FullName, "WebMagic.Specifications.Infrastructure.Websites." + websiteName).Unwrap(); ;
         }
 
         /// <summary>

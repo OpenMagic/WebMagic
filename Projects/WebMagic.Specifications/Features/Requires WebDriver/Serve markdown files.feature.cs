@@ -74,20 +74,27 @@ namespace WebMagic.Specifications.Features.RequiresWebDriver
             this.ScenarioTearDown();
         }
         
-        [Xunit.FactAttribute()]
+        [Xunit.Extensions.TheoryAttribute()]
         [Xunit.TraitAttribute("FeatureTitle", "Serve markdown files")]
-        [Xunit.TraitAttribute("Description", "Empty ASP.NET Web Application")]
-        public virtual void EmptyASP_NETWebApplication()
+        [Xunit.TraitAttribute("Description", "Correct Url is used")]
+        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/", "<h1>/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/index", "<h1>/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/readme", "<h1>Markdown.EmptyAspNetWebApplication</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/directory-test", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/directory-test/", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/directory-test/index", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/directory-test/file", "<h1>/directory-test/file.md</h1>", new string[0])]
+        public virtual void CorrectUrlIsUsed(string websiteName, string url, string heading, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Empty ASP.NET Web Application", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Correct Url is used", exampleTags);
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
- testRunner.Given("the website is a \'Empty ASP.NET Web Application\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("the website is {0}", websiteName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.When("I visit \'/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I visit {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
- testRunner.Then("the page should include \'<h1>/index.md</h1>\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the page should include {0}", heading), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 10
  testRunner.And("the page is rendered with a layout page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden

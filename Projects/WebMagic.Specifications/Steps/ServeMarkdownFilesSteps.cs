@@ -7,19 +7,19 @@ namespace WebMagic.Specifications.Steps
     [Binding]
     public class ServeMarkdownFilesSteps : StepsBase
     {
-        [Given(@"the website is a '(.*)'")]
-        public void GivenTheWebsiteIsA(string websiteType)
+        [Given(@"the website is (.*)")]
+        public void GivenTheWebsiteIsA(string websiteName)
         {
-            OpenWebsite("Markdown", websiteType);
+            OpenWebsite(websiteName);
         }
 
-        [When(@"I visit '(.*)'")]
+        [When(@"I visit (.*)")]
         public void WhenIVisit(string url)
         {
             Website.GoTo(url);
         }
 
-        [Then(@"the page should include '(.*)'")]
+        [Then(@"the page should include (.*)")]
         public void ThenThePageShouldInclude(string expectedInPageSource)
         {
             WebDriver.PageSource.Should().Contain(expectedInPageSource);

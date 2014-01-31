@@ -47,6 +47,8 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="directory-test\index.md" />
+    <Content Include="directory-test\file.md" />
     <None Include="index.md" />
     <Content Include="Global.asax" />
     <Content Include="README.md" />
