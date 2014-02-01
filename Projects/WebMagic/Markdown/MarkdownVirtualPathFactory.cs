@@ -13,7 +13,7 @@ namespace WebMagic.Markdown
         private readonly string[] MarkdownExtensions;
         private readonly IMarkdownParser MarkdownParser;
 
-        public MarkdownVirtualPathFactory(MarkdownPagesOptions options, MarkdownParser markdownParser)
+        public MarkdownVirtualPathFactory(MarkdownPagesOptions options, IMarkdownParser markdownParser)
         {
             MarkdownExtensions = options.MarkdownExtensions.Select(ext => ext.AddLeadingDot()).ToArray();
             MarkdownParser = markdownParser;
