@@ -60,6 +60,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Requires WebDriver\Serve files from repository.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Serve files from repository.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\String extensions.feature.cs">
       <DependentUpon>String extensions.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -74,6 +79,7 @@
     <Compile Include="Infrastructure\WebServers\IISExpressWebServer.cs" />
     <Compile Include="Infrastructure\WebServers\IWebServer.cs" />
     <Compile Include="Infrastructure\StepsBase.cs" />
+    <Compile Include="Infrastructure\Websites\MarkdownEmptyAspNetWebApplication - Copy.cs" />
     <Compile Include="Infrastructure\Websites\MarkdownEmptyAspNetWebApplication.cs" />
     <Compile Include="Infrastructure\Machine.cs" />
     <Compile Include="Infrastructure\Websites\WebsiteBase.cs" />
@@ -92,6 +98,10 @@
     <None Include="Features\Requires WebDriver\Serve markdown files.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Serve markdown files.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Requires WebDriver\Serve files from repository.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Serve files from repository.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\String extensions.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

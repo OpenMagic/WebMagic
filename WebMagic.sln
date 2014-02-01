@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specification Helpers", "Sp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMagic", "Projects\WebMagic\WebMagic.csproj", "{603F544B-FC04-465D-898A-BE2436D3C691}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.EmptyAspNetWebApplication", "Projects\Repository.EmptyAspNetWebApplication\Repository.EmptyAspNetWebApplication.csproj", "{455035D6-E0BA-4570-8EE6-8D94E2A3B957}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{603F544B-FC04-465D-898A-BE2436D3C691}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{603F544B-FC04-465D-898A-BE2436D3C691}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{603F544B-FC04-465D-898A-BE2436D3C691}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455035D6-E0BA-4570-8EE6-8D94E2A3B957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455035D6-E0BA-4570-8EE6-8D94E2A3B957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455035D6-E0BA-4570-8EE6-8D94E2A3B957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455035D6-E0BA-4570-8EE6-8D94E2A3B957}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,5 +55,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E1411234-D871-42F0-A58E-B5E42A8037E6} = {788A8AD3-DFD0-417F-96C1-C72F24A5F154}
 		{5CD92408-3C80-48A1-B6C7-BDF4A9FEC38F} = {B8775BE4-1C55-40DE-95CA-0EA2BCA59DCE}
+		{455035D6-E0BA-4570-8EE6-8D94E2A3B957} = {B8775BE4-1C55-40DE-95CA-0EA2BCA59DCE}
 	EndGlobalSection
 EndGlobal
