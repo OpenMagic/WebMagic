@@ -3,9 +3,9 @@ using MarkdownSharp;
 
 namespace WebMagic.Markdown
 {
-    public class MarkdownConfiguration
+    public class MarkdownPagesOptions
     {
-        public MarkdownConfiguration()
+        public MarkdownPagesOptions()
         {
             MarkdownExtensions = new[] {".md", ".markdown"};
             MarkdownSharpOptions = new MarkdownOptions();

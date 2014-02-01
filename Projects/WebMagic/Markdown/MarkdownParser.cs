@@ -4,9 +4,9 @@ namespace WebMagic.Markdown
     {
         private readonly MarkdownSharp.Markdown Parser;
 
-        public MarkdownParser(MarkdownConfiguration configuration)
+        public MarkdownParser(MarkdownPagesOptions options)
         {
-            Parser = new MarkdownSharp.Markdown(configuration.MarkdownSharpOptions);
+            Parser = new MarkdownSharp.Markdown(options.MarkdownSharpOptions);
         }
 
         public string ToHtml(string markdown)

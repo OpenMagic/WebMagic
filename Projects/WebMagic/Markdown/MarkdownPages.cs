@@ -8,17 +8,17 @@ namespace WebMagic.Markdown
     {
         public static void Start()
         {
-            Start(new MarkdownConfiguration());
+            Start(new MarkdownPagesOptions());
         }
 
-        public static void Start(MarkdownConfiguration configuration)
+        public static void Start(MarkdownPagesOptions options)
         {
-            Start(configuration, new MarkdownVirtualPathFactory(configuration, new MarkdownParser(configuration)));
+            Start(options, new MarkdownVirtualPathFactory(options, new MarkdownParser(options)));
         }
 
-        public static void Start(MarkdownConfiguration configuration, IVirtualPathFactory virtualPathFactory)
+        public static void Start(MarkdownPagesOptions options, IVirtualPathFactory virtualPathFactory)
         {
-            WebPageHttpHandlerExtensions.RegisterExtensions(configuration.MarkdownExtensions.Select(ext => ext.RemoveLeadingDot()));
+            WebPageHttpHandlerExtensions.RegisterExtensions(options.MarkdownExtensions.Select(ext => ext.RemoveLeadingDot()));
             VirtualPathFactoryManager.RegisterVirtualPathFactory(virtualPathFactory);
         }
     }
