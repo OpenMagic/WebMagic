@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Markdown.EmptyAspNetWebApplication.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Repository.EmptyAspNetWebApplication.Global" Language="C#" %>

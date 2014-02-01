@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using WebMagic.Markdown;
 
-namespace Markdown.EmptyAspNetWebApplication
+namespace Repository.EmptyAspNetWebApplication
 {
     public class Global : HttpApplication
     {
