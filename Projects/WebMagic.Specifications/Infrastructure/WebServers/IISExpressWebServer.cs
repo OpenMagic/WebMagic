@@ -22,20 +22,21 @@ namespace WebMagic.Specifications.Infrastructure.WebServers
 
         public void StartWebsite(DirectoryInfo projectDirectory, int port)
         {
-            var processStartInfo = new ProcessStartInfo
+            using (SimpleProfiler.Trace(string.Format("StartWebsite(projectDirectory: {0}, port: {1})", projectDirectory, port)))
             {
-                WindowStyle = ProcessWindowStyle.Normal,
-                ErrorDialog = true,
-                LoadUserProfile = true,
-                CreateNoWindow = false,
-                UseShellExecute = false,
-                Arguments = String.Format("/path:\"{0}\" /port:{1}", projectDirectory.FullName, port),
-                FileName = GetIISExpressFile().FullName
-            };
+                var processStartInfo = new ProcessStartInfo
+                {
+                    WindowStyle = ProcessWindowStyle.Normal,
+                    ErrorDialog = true,
+                    LoadUserProfile = true,
+                    CreateNoWindow = false,
+                    UseShellExecute = false,
+                    Arguments = String.Format("/path:\"{0}\" /port:{1}", projectDirectory.FullName, port),
+                    FileName = GetIISExpressFile().FullName
+                };
 
-            LogTo.Trace("StartWebsite: {0} {1}", processStartInfo.FileName, processStartInfo.Arguments);
-
-            Process = Process.Start(processStartInfo);
+                Process = Process.Start(processStartInfo);
+            }
         }
 
         public void StopWebsite()

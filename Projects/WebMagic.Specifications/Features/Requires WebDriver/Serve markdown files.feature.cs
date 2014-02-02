@@ -34,8 +34,8 @@ namespace WebMagic.Specifications.Features.RequiresWebDriver
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Serve markdown files", "As a developer\nI want to serve markdown files as easily as I can serve html files" +
-                    " or mvc views", ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Serve markdown files", "As a developer\r\nI want to serve markdown files as easily as I can serve html file" +
+                    "s or mvc views", ProgrammingLanguage.CSharp, new string[] {
                         "web"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -77,20 +77,20 @@ namespace WebMagic.Specifications.Features.RequiresWebDriver
         [Xunit.Extensions.TheoryAttribute()]
         [Xunit.TraitAttribute("FeatureTitle", "Serve markdown files")]
         [Xunit.TraitAttribute("Description", "Correct Url is used")]
-        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/", "<h1>/index.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/index", "<h1>/index.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/readme", "<h1>Markdown.EmptyAspNetWebApplication</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/directory-test", "<h1>/directory-test/index.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/directory-test/", "<h1>/directory-test/index.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/directory-test/index", "<h1>/directory-test/index.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("MarkdownEmptyAspNetWebApplication", "/directory-test/file", "<h1>/directory-test/file.md</h1>", new string[0])]
-        public virtual void CorrectUrlIsUsed(string websiteName, string url, string heading, string[] exampleTags)
+        [Xunit.Extensions.InlineDataAttribute("Markdown.EmptyAspNetWebApplication", "/", "<h1>/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Markdown.EmptyAspNetWebApplication", "/index", "<h1>/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Markdown.EmptyAspNetWebApplication", "/readme", "<h1>Markdown.EmptyAspNetWebApplication</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Markdown.EmptyAspNetWebApplication", "/directory-test", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Markdown.EmptyAspNetWebApplication", "/directory-test/", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Markdown.EmptyAspNetWebApplication", "/directory-test/index", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Markdown.EmptyAspNetWebApplication", "/directory-test/file", "<h1>/directory-test/file.md</h1>", new string[0])]
+        public virtual void CorrectUrlIsUsed(string websiteProject, string url, string heading, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Correct Url is used", exampleTags);
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
- testRunner.Given(string.Format("the website is {0}", websiteName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("the website is {0}", websiteProject), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
  testRunner.When(string.Format("I visit {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9

@@ -2,35 +2,34 @@
 using System.IO;
 using Anotar.CommonLogging;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using WebMagic.Specifications.Infrastructure.WebServers;
 
-namespace WebMagic.Specifications.Infrastructure.Websites
+namespace WebMagic.Specifications.Infrastructure
 {
-    public abstract class WebsiteBase : IDisposable
+    public class WebsiteProject : IDisposable
     {
-        private readonly Uri Uri;
+        public readonly Uri Uri;
+
         private readonly IWebServer WebServer;
+        private readonly IWebDriver WebDriver;
 
         private bool IsDisposed;
 
-        protected WebsiteBase(DirectoryInfo projectDirectory, int port)
-            : this(new IISExpressWebServer(), projectDirectory, port)
+        public WebsiteProject(IWebDriver webDriver, DirectoryInfo projectDirectory, int port)
+            : this(new IISExpressWebServer(), webDriver, projectDirectory, port)
         {
         }
 
-        protected WebsiteBase(IWebServer webServer, DirectoryInfo projectDirectory, int port)
+        public WebsiteProject(IWebServer webServer, IWebDriver webDriver, DirectoryInfo projectDirectory, int port)
         {
-            LogTo.Trace("WebsiteBase(webServer, projectDirectory: {0}, port: {1})", projectDirectory, port);
+            LogTo.Trace("WebsiteProject(webServer, projectDirectory: {0}, port: {1})", projectDirectory, port);
 
             WebServer = webServer;
+            WebDriver = webDriver;
             Uri = new Uri(string.Format("http://localhost:{0}", port));
 
             WebServer.StartWebsite(projectDirectory, port);
-            WebDriver = new FirefoxDriver();
         }
-
-        public IWebDriver WebDriver { get; private set; }
 
         /// <summary>
         ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -60,15 +59,14 @@ namespace WebMagic.Specifications.Infrastructure.Websites
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
+            LogTo.Trace("Dispose(disposing: {0})", disposing);
+
             if (!IsDisposed)
             {
                 if (disposing)
                 {
                     WebServer.StopWebsite();
-                    WebDriver.Dispose();
                 }
-
-                WebDriver = null;
             }
 
             IsDisposed = true;

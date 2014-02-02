@@ -1,19 +1,29 @@
 ﻿using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+using System.Diagnostics;
+using Common.Logging;
+using OpenQA.Selenium.Support.UI;
 
 namespace WebMagic.Specifications.Infrastructure
 {
-    public abstract class StepsBase : IDisposable
+    public class SimpleProfiler : IDisposable
     {
-        private static readonly Lazy<IWebDriver> LazyWebDriver = new Lazy<IWebDriver>(() => new FirefoxDriver());
-
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+        
         private bool IsDisposed;
-        protected WebsiteProject WebsiteProject;
+        private readonly LogLevel LogLevel;
+        private readonly string Message;
+        private readonly Stopwatch Stopwatch;
 
-        public IWebDriver WebDriver
+        public SimpleProfiler(LogLevel logLevel, string message)
         {
-            get { return LazyWebDriver.Value; }
+            LogLevel = logLevel;
+            Message = message;
+            Stopwatch = Stopwatch.StartNew();
+        }
+
+        public static SimpleProfiler Trace(string message)
+        {
+            return new SimpleProfiler(LogLevel.Trace, message);
         }
 
         /// <summary>
@@ -25,13 +35,6 @@ namespace WebMagic.Specifications.Infrastructure
             // Put cleanup code in Dispose(bool disposing).
             Dispose(true);
             GC.SuppressFinalize(this);
-        }
-
-        protected void OpenWebsite(string websiteProject)
-        {
-            var projectDirectory = Machine.GetProjectDirectory(websiteProject);
-
-            WebsiteProject = new WebsiteProject(WebDriver, projectDirectory, 1700);
         }
 
         /// <summary>
@@ -47,15 +50,9 @@ namespace WebMagic.Specifications.Infrastructure
             {
                 if (disposing)
                 {
-                    if (WebsiteProject != null)
-                    {
-                        WebsiteProject.Dispose();
-                    }
+                    Log.Log(LogLevel, string.Format("{0} took {1:N}ms.", Message, Stopwatch.ElapsedMilliseconds));
                 }
-
-                WebsiteProject = null;
             }
-
             IsDisposed = true;
         }
     }

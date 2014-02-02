@@ -75,20 +75,20 @@ namespace WebMagic.Specifications.Features.RequiresWebDriver
         [Xunit.Extensions.TheoryAttribute()]
         [Xunit.TraitAttribute("FeatureTitle", "Serve files from repository")]
         [Xunit.TraitAttribute("Description", "Correct page url is used")]
-        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/", "<h1>/index.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/index", "<h1>/index.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/page", "<h1>/page.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/directory-test", "<h1>/directory-test/index.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/directory-test/", "<h1>/directory-test/index.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/directory-test/index", "<h1>/directory-test/index.md</h1>", new string[0])]
-        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/directory-test/page", "<h1>/directory-test/page.md</h1>", new string[0])]
-        public virtual void CorrectPageUrlIsUsed(string websiteName, string url, string heading, string[] exampleTags)
+        [Xunit.Extensions.InlineDataAttribute("Repository.EmptyAspNetWebApplication", "/", "<h1>/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Repository.EmptyAspNetWebApplication", "/index", "<h1>/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Repository.EmptyAspNetWebApplication", "/page", "<h1>/page.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Repository.EmptyAspNetWebApplication", "/directory-test", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Repository.EmptyAspNetWebApplication", "/directory-test/", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Repository.EmptyAspNetWebApplication", "/directory-test/index", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("Repository.EmptyAspNetWebApplication", "/directory-test/page", "<h1>/directory-test/page.md</h1>", new string[0])]
+        public virtual void CorrectPageUrlIsUsed(string websiteProject, string url, string heading, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Correct page url is used", exampleTags);
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
- testRunner.Given(string.Format("the website is {0}", websiteName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("the website is {0}", websiteProject), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
  testRunner.When(string.Format("I visit {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8

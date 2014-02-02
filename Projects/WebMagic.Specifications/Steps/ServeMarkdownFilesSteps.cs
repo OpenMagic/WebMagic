@@ -16,7 +16,7 @@ namespace WebMagic.Specifications.Steps
         [When(@"I visit (.*)")]
         public void WhenIVisit(string url)
         {
-            Website.GoTo(url);
+            WebsiteProject.GoTo(url);
         }
 
         [Then(@"the page should include (.*)")]
