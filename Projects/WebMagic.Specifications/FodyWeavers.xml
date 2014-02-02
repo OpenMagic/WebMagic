@@ -2,4 +2,5 @@
 <Weavers>
     <EmptyStringGuard IncludeDebugAssert="false" />
     <NullGuard IncludeDebugAssert="false" />
+    <Anotar.CommonLogging />
 </Weavers>

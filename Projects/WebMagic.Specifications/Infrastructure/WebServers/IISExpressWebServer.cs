@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using Anotar.CommonLogging;
 
 namespace WebMagic.Specifications.Infrastructure.WebServers
 {
@@ -21,17 +22,20 @@ namespace WebMagic.Specifications.Infrastructure.WebServers
 
         public void StartWebsite(DirectoryInfo projectDirectory, int port)
         {
-            Process = Process.Start(new ProcessStartInfo
-                {
-                    WindowStyle = ProcessWindowStyle.Normal,
-                    ErrorDialog = true,
-                    LoadUserProfile = true,
-                    CreateNoWindow = false,
-                    UseShellExecute = false,
-                    Arguments = String.Format("/path:\"{0}\" /port:{1}", projectDirectory.FullName, port),
-                    FileName = GetIISExpressFile().FullName
-                }
-            );
+            var processStartInfo = new ProcessStartInfo
+            {
+                WindowStyle = ProcessWindowStyle.Normal,
+                ErrorDialog = true,
+                LoadUserProfile = true,
+                CreateNoWindow = false,
+                UseShellExecute = false,
+                Arguments = String.Format("/path:\"{0}\" /port:{1}", projectDirectory.FullName, port),
+                FileName = GetIISExpressFile().FullName
+            };
+
+            LogTo.Trace("StartWebsite: {0} {1}", processStartInfo.FileName, processStartInfo.Arguments);
+
+            Process = Process.Start(processStartInfo);
         }
 
         public void StopWebsite()

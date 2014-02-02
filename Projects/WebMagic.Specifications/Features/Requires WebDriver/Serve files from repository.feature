@@ -10,15 +10,12 @@ Scenario Outline: Correct page url is used
 	Examples:
 		| WebsiteName                         | Url                   | Heading                           |
 		| RepositoryEmptyAspNetWebApplication | /                     | <h1>/index.md</h1>                |
-
-
-		# todo
-		# | RepositoryEmptyAspNetWebApplication | /index                | <h1>/index.md</h1>                |
-		# | RepositoryEmptyAspNetWebApplication | /page                 | <h1>/page.md</h1>                 |
-		# | RepositoryEmptyAspNetWebApplication | /directory-test       | <h1>/directory-test/index.md</h1> |
-		# | RepositoryEmptyAspNetWebApplication | /directory-test/      | <h1>/directory-test/index.md</h1> |
-		# | RepositoryEmptyAspNetWebApplication | /directory-test/index | <h1>/directory-test/index.md</h1> |
-		# | RepositoryEmptyAspNetWebApplication | /directory-test/page  | <h1>/directory-test/page.md</h1>  |
+		| RepositoryEmptyAspNetWebApplication | /index                | <h1>/index.md</h1>                |
+		| RepositoryEmptyAspNetWebApplication | /page                 | <h1>/page.md</h1>                 |
+		| RepositoryEmptyAspNetWebApplication | /directory-test       | <h1>/directory-test/index.md</h1> |
+		| RepositoryEmptyAspNetWebApplication | /directory-test/      | <h1>/directory-test/index.md</h1> |
+		| RepositoryEmptyAspNetWebApplication | /directory-test/index | <h1>/directory-test/index.md</h1> |
+		| RepositoryEmptyAspNetWebApplication | /directory-test/page  | <h1>/directory-test/page.md</h1>  |
 
 #Scenario Outline: Correct image url is used
 #Scenario Outline: Repository directory is return 404, page not found

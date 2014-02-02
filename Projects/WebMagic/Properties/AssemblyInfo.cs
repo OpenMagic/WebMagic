@@ -1,4 +1,4 @@
-﻿// General Information about an assembly is controlled through the following 
+// General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
@@ -6,12 +6,12 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Anotar.CommonLogging;
 
-[assembly: AssemblyTitle("WebMagic.Specifications")]
+[assembly: AssemblyTitle("WebMagic")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WebMagic.Specifications")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("WebMagic")]
+[assembly: AssemblyCopyright("Copyright �  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -21,7 +21,7 @@ using Anotar.CommonLogging;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4289e289-af2b-4e76-a0d0-a12a3204ef5a")]
+[assembly: Guid("37ef5d53-1d74-40f8-aaa8-ab612e04172f")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -76,6 +76,12 @@ namespace WebMagic.Specifications.Features.RequiresWebDriver
         [Xunit.TraitAttribute("FeatureTitle", "Serve files from repository")]
         [Xunit.TraitAttribute("Description", "Correct page url is used")]
         [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/", "<h1>/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/index", "<h1>/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/page", "<h1>/page.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/directory-test", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/directory-test/", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/directory-test/index", "<h1>/directory-test/index.md</h1>", new string[0])]
+        [Xunit.Extensions.InlineDataAttribute("RepositoryEmptyAspNetWebApplication", "/directory-test/page", "<h1>/directory-test/page.md</h1>", new string[0])]
         public virtual void CorrectPageUrlIsUsed(string websiteName, string url, string heading, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Correct page url is used", exampleTags);
