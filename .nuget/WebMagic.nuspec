@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+    <metadata>
+        <id>WebMagic</id>
+        <version>$version$</version>
+        <title>WebMagic</title>
+        <authors>Tim Murphy</authors>
+        <owners>Tim Murphy</owners>
+        <licenseUrl>https://github.com/WebMagic/WebMagic/blob/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/WebMagic/WebMagic</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Collection of web utility classes by Tim Murphy.</description>
+        <copyright>Copyright (c) 2013-2014 Tim Murphy</copyright>
+    </metadata>
+    <files>
+        <file src="..\Projects\WebMagic\bin\Release\WebMagic.*" target="lib/net45"/>
+    </files>
+</package>
