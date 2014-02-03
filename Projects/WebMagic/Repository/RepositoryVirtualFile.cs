@@ -8,7 +8,7 @@ namespace WebMagic.Repository
     {
         private readonly IRepository Repository;
 
-        public RepositoryVirtualFile(string virtualPath, IRepository repository) : base(virtualPath)
+        public RepositoryVirtualFile(string path, IRepository repository) : base(path)
         {
             Repository = repository;
         }

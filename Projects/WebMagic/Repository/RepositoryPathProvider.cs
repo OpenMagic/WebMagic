@@ -1,7 +1,4 @@
-﻿using System;
-using System.Web;
-using System.Web.Hosting;
-using Anotar.CommonLogging;
+﻿using System.Web.Hosting;
 
 namespace WebMagic.Repository
 {
@@ -35,7 +32,7 @@ namespace WebMagic.Repository
         public override bool DirectoryExists(string virtualDirectory)
         {
             // Note: Previous.DirectoryExists must called, not base.DirectoryExists.
-            return IsPathVirtual(virtualDirectory) ? Repository.DirectoryExists(virtualDirectory) : Previous.DirectoryExists(virtualDirectory);
+            return IsVirtualPath(virtualDirectory) ? Repository.DirectoryExists(VirtualPathToPath(virtualDirectory)) : Previous.DirectoryExists(virtualDirectory);
         }
 
         /// <summary>
@@ -49,7 +46,7 @@ namespace WebMagic.Repository
         public override VirtualDirectory GetDirectory(string virtualDirectory)
         {
             // Note: Previous.GetDirectory must called, not base.GetDirectory.
-            return IsPathVirtual(virtualDirectory) ? Repository.GetDirectory(virtualDirectory) : Previous.GetDirectory(virtualDirectory);
+            return IsVirtualPath(virtualDirectory) ? Repository.GetDirectory(VirtualPathToPath(virtualDirectory)) : Previous.GetDirectory(virtualDirectory);
         }
 
         /// <summary>
@@ -63,7 +60,7 @@ namespace WebMagic.Repository
         public override VirtualFile GetFile(string virtualPath)
         {
             // Note: Previous.GetFile must called, not base.GetFile.
-            return IsPathVirtual(virtualPath) ? Repository.GetFile(virtualPath) : Previous.GetFile(virtualPath);
+            return IsVirtualPath(virtualPath) ? Repository.GetFile(VirtualPathToPath(virtualPath)) : Previous.GetFile(virtualPath);
         }
 
         /// <summary>
@@ -76,29 +73,27 @@ namespace WebMagic.Repository
         public override bool FileExists(string virtualPath)
         {
             // Note: Previous.FileExists must called, not base.FileExists.
-            return IsPathVirtual(virtualPath) ? Repository.FileExists(virtualPath) : Previous.FileExists(virtualPath);
+            return IsVirtualPath(virtualPath) ? Repository.FileExists(VirtualPathToPath(virtualPath)) : Previous.FileExists(virtualPath);
         }
 
         /// <summary> 
         ///     Determines whether a specified virtual path is within virtual file system. 
         /// </summary> 
-        /// <param name="virtualPath">An absolute virtual path.</param>
+        /// <param name="virtualPath">
+        ///     An absolute virtual path.
+        /// </param>
         /// <returns> 
-        ///   true if the virtual path is within the virtual file system; otherwise, false. 
+        ///     true if the virtual path is within the virtual file system; otherwise, false. 
         /// </returns> 
-        private bool IsPathVirtual(string virtualPath)
+        protected virtual bool IsVirtualPath(string virtualPath)
         {
-            if (!virtualPath.StartsWith("~/"))
-            {
-                return false;
-            }
-
-            var checkPath = VirtualPathUtility.ToAppRelative(virtualPath);
-            var result = checkPath.StartsWith(Repository.VirtualDirectory, StringComparison.InvariantCultureIgnoreCase);
-
-            LogTo.Trace("IsPathVirtual(virtualPath: {0}) - checkPath: {1} => {2}", virtualPath, checkPath, result);
-
-            return result;
+            return virtualPath.StartsWith("~/");
         }
+
+        protected virtual string VirtualPathToPath(string virtualPath)
+        { 
+            return virtualPath.Substring(2).Replace('/', '\\');
+        }
+
     }
 }

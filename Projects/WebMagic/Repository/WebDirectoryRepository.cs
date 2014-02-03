@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Web.Hosting;
 using Anotar.CommonLogging;
 using NullGuard;
@@ -10,113 +9,84 @@ namespace WebMagic.Repository
     {
         private readonly string RootDirectory;
 
-        public WebDirectoryRepository(string virtualDirectory, string rootDirectory)
+        public WebDirectoryRepository(string rootDirectory)
         {
-            VirtualDirectory = virtualDirectory;
             RootDirectory = rootDirectory;
         }
 
         /// <summary>
         ///     Gets a value that indicates whether a directory exists in the virtual file system.
         /// </summary>
-        /// <param name="virtualDirectory">The path to the virtual directory.</param>
+        /// <param name="directory">The path to the virtual directory.</param>
         /// <returns>
         ///     true if the directory exists in the virtual file system; otherwise, false.
         /// </returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public bool DirectoryExists(string virtualDirectory)
+        public bool DirectoryExists(string directory)
         {
-            LogTo.Warn("DirectoryExists(virtualDirectory: {0}) is not supported.", virtualDirectory);
+            LogTo.Warn("DirectoryExists(directory: {0}) is not supported.", directory);
             return false;
         }
 
         /// <summary>
         ///     Gets a virtual directory from the virtual file system.
         /// </summary>
-        /// <param name="virtualDirectory">The path to the virtual directory.</param>
+        /// <param name="directory">The path to the virtual directory.</param>
         /// <returns>
         ///     A descendant of the <see cref="T:System.Web.Hosting.VirtualDirectory" /> class that represents a directory in the
         ///     virtual file system.
         /// </returns>
         /// <exception cref="System.NotImplementedException"></exception>
         [return: AllowNull]
-        public VirtualDirectory GetDirectory(string virtualDirectory)
+        public VirtualDirectory GetDirectory(string directory)
         {
-            LogTo.Warn("GetDirectory(virtualDirectory: {0}) is not supported. todo: Why is this being called if DirectoryExists() returns false?", virtualDirectory);
+            LogTo.Warn("GetDirectory(directory: {0}) is not supported. todo: Why is this being called if DirectoryExists() returns false?", directory);
             return null;
         }
 
         /// <summary>
         ///     Gets a virtual file from the virtual file system.
         /// </summary>
-        /// <param name="virtualPath">The path to the virtual file.</param>
+        /// <param name="path">The path to the virtual file.</param>
         /// <returns>
         ///     A descendant of the <see cref="T:System.Web.Hosting.VirtualFile" /> class that represents a file in the virtual
         ///     file system.
         /// </returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        [return: AllowNull]
-        public VirtualFile GetFile(string virtualPath)
+        public VirtualFile GetFile(string path)
         {
-            // todo: delete
-            //if (!FileExists(virtualPath))
-            //{
-            //    LogTo.Warn("GetFile(virtualPath: {0}). todo: Why is this being called if GetFile() has not already been called?", virtualPath);
-            //    return null;
-            //}
-            return new RepositoryVirtualFile(virtualPath, this);
+            return new RepositoryVirtualFile(path, this);
         }
 
         /// <summary>
         ///     Gets a value that indicates whether a file exists in the virtual file system.
         /// </summary>
-        /// <param name="virtualPath">The path to the virtual file.</param>
+        /// <param name="path">The path to the virtual file.</param>
         /// <returns>
         ///     true if the file exists in the virtual file system; otherwise, false.
         /// </returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public bool FileExists(string virtualPath)
+        public bool FileExists(string path)
         {
-            var fileName = GetFileName(virtualPath);
+            var fileName = GetFullPath(path);
             var exists = File.Exists(fileName);
 
-            LogTo.Trace("FileExists(virtualPath: {0}) - fileName: {1} => {2}", virtualPath, fileName, exists);
+            LogTo.Trace("FileExists(path: {0}) => {1}", path, exists);
 
             return exists;
         }
 
-        public Stream OpenStream(string virtualPath)
+        public Stream OpenStream(string path)
         {
-            var fileName = GetFileName(virtualPath);
+            var fileName = GetFullPath(path);
 
             return File.OpenRead(fileName);
         }
 
-        public string VirtualDirectory { get; private set; }
-
-        private string GetFileName(string virtualPath)
+        private string GetFullPath(string path)
         {
-            return Path.Combine(RootDirectory, VirtualPathToFileName(virtualPath));
+            return Path.Combine(RootDirectory, path);
         }
 
-        private static string VirtualPathToFileName(string virtualPath)
-        {
-            var substringIndex = 0;
-
-            if (virtualPath.StartsWith("~/"))
-            {
-                substringIndex = 2;
-            }
-            else if (virtualPath.StartsWith("/"))
-            {
-                substringIndex = 1;
-            }
-            else
-            {
-                throw new ArgumentException(string.Format("Expected virtualPath, {0}, to start with '/' or '~/'.", virtualPath), "virtualPath");
-            }
-
-            return virtualPath.Substring(substringIndex).Replace('/', '\\');
-        }
     }
 }

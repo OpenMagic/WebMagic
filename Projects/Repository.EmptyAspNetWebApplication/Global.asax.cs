@@ -11,7 +11,7 @@ namespace Repository.EmptyAspNetWebApplication
             const string pagesDirectory = "~/Pages";
 
             MarkdownPages.Start(new MarkdownPagesOptions { MarkdownExtensions = new[] { ".md" } });
-            RepositoryProvider.Start(new WebDirectoryRepository("~/", Server.MapPath(pagesDirectory)));
+            RepositoryProvider.Start(new WebDirectoryRepository(Server.MapPath(pagesDirectory)));
         }
     }
 }
