@@ -68,6 +68,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\WebMagic\Properties\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

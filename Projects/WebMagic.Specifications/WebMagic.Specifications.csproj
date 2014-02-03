@@ -78,6 +78,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\WebMagic\Properties\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Features\Requires WebDriver\Serve files from repository.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
