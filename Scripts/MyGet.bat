@@ -37,6 +37,9 @@ if not "%errorlevel%" == "0" goto Error
 echo.
 echo.
 
+rem todo: confgure tests to run on myget.
+goto BuildNuGetPackage
+
 echo Running unit tests...
 echo -------------------------------
 echo.
@@ -55,6 +58,8 @@ if "%GallioEcho%" == "" (
 if not "%errorlevel%" == "0" goto Error
 echo.
 echo.
+
+:BuildNuGetPackage
 
 echo Building NuGet package...
 echo -------------------------
