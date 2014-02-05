@@ -8,7 +8,7 @@ namespace WebMagic.Repository
 {
     public class WebDirectoryRepository : IRepository
     {
-        private readonly string RootDirectory;
+        protected readonly string RootDirectory;
 
         public WebDirectoryRepository(string rootDirectory)
         {
