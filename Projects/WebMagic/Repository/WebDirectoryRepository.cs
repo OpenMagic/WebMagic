@@ -2,6 +2,7 @@
 using System.Web.Hosting;
 using Anotar.CommonLogging;
 using NullGuard;
+using EmptyStringGuard;
 
 namespace WebMagic.Repository
 {
@@ -65,8 +66,7 @@ namespace WebMagic.Repository
         /// <returns>
         ///     true if the file exists in the virtual file system; otherwise, false.
         /// </returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public virtual bool FileExists(string path)
+        public virtual bool FileExists([AllowEmpty] string path)
         {
             var fileName = GetFullPath(path);
             var exists = File.Exists(fileName);
@@ -83,10 +83,9 @@ namespace WebMagic.Repository
             return File.OpenRead(fileName);
         }
 
-        protected virtual string GetFullPath(string path)
+        protected virtual string GetFullPath([AllowEmpty] string path)
         {
             return Path.Combine(RootDirectory, path);
         }
-
     }
 }
