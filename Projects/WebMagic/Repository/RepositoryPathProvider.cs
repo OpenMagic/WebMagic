@@ -51,8 +51,14 @@ namespace WebMagic.Repository
         /// </returns>
         public override VirtualDirectory GetDirectory(string virtualDirectory)
         {
-            // Note: Previous.GetDirectory must called, not base.GetDirectory.
-            return IsVirtualPath(virtualDirectory) ? Repository.GetDirectory(VirtualPathToPath(virtualDirectory)) : Previous.GetDirectory(virtualDirectory);
+            // Previous.GetDirectory must called, not base.GetDirectory.
+            //
+            // System.Web.Optimization.BundleDirectoryItem.AddFiles(List`1 files, BundleContext context) (and possibly others) seems to
+            // call GetDirectory without calling DirectoryExists first. Therefore it is called here.
+
+            return IsVirtualPath(virtualDirectory) && DirectoryExists(virtualDirectory) ? 
+                Repository.GetDirectory(VirtualPathToPath(virtualDirectory)) : 
+                Previous.GetDirectory(virtualDirectory);
         }
 
         /// <summary>
