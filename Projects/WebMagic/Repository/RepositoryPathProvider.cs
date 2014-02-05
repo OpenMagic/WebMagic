@@ -1,4 +1,6 @@
 ﻿using System.Web.Hosting;
+using Anotar.CommonLogging;
+using Common.Logging;
 
 namespace WebMagic.Repository
 {
@@ -46,7 +48,19 @@ namespace WebMagic.Repository
         public override VirtualDirectory GetDirectory(string virtualDirectory)
         {
             // Note: Previous.GetDirectory must called, not base.GetDirectory.
-            return IsVirtualPath(virtualDirectory) ? Repository.GetDirectory(VirtualPathToPath(virtualDirectory)) : Previous.GetDirectory(virtualDirectory);
+            // Note: Previous.GetFile must called, not base.GetFile.
+            LogTo.Trace("GetDirectory(virtualDirectory: {0})", virtualDirectory);
+
+            if (IsVirtualPath(virtualDirectory))
+            {
+                var path = VirtualPathToPath(virtualDirectory);
+
+                LogTo.Trace("Calling Repository.GetDirectory({0}) because {1} is a virtual path.", path, virtualDirectory);
+                return Repository.GetDirectory(path);
+            }
+
+            LogTo.Trace("Calling Previous.GetDirectory({0}) because virtualDirectory is not a virtual path.", virtualDirectory);
+            return Previous.GetDirectory(virtualDirectory);
         }
 
         /// <summary>
@@ -60,7 +74,18 @@ namespace WebMagic.Repository
         public override VirtualFile GetFile(string virtualPath)
         {
             // Note: Previous.GetFile must called, not base.GetFile.
-            return IsVirtualPath(virtualPath) ? Repository.GetFile(VirtualPathToPath(virtualPath)) : Previous.GetFile(virtualPath);
+            LogTo.Trace("GetFile(virtualPath: {0})", virtualPath);
+
+            if (IsVirtualPath(virtualPath))
+            {
+                var path = VirtualPathToPath(virtualPath);
+
+                LogTo.Trace("Calling Repository.GetFile({0}) because {1} is a virtual path.", path, virtualPath);
+                return Repository.GetFile(path);
+            }
+
+            LogTo.Trace("Calling Previous.GetFile({0}) because virtualPath is not a virtual path.", virtualPath);
+            return Previous.GetFile(virtualPath);
         }
 
         /// <summary>
@@ -94,6 +119,5 @@ namespace WebMagic.Repository
         { 
             return virtualPath.Substring(2).Replace('/', '\\');
         }
-
     }
 }
