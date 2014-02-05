@@ -34,7 +34,11 @@ namespace WebMagic.Repository
         public override bool DirectoryExists(string virtualDirectory)
         {
             // Note: Previous.DirectoryExists must called, not base.DirectoryExists.
-            return IsVirtualPath(virtualDirectory) ? Repository.DirectoryExists(VirtualPathToPath(virtualDirectory)) : Previous.DirectoryExists(virtualDirectory);
+            var result = IsVirtualPath(virtualDirectory) ? Repository.DirectoryExists(VirtualPathToPath(virtualDirectory)) : Previous.DirectoryExists(virtualDirectory);
+
+            LogTo.Trace("DirectoryExists({0}) => {1}", virtualDirectory, result);
+
+            return result;
         }
 
         /// <summary>
@@ -48,19 +52,7 @@ namespace WebMagic.Repository
         public override VirtualDirectory GetDirectory(string virtualDirectory)
         {
             // Note: Previous.GetDirectory must called, not base.GetDirectory.
-            // Note: Previous.GetFile must called, not base.GetFile.
-            LogTo.Trace("GetDirectory(virtualDirectory: {0})", virtualDirectory);
-
-            if (IsVirtualPath(virtualDirectory))
-            {
-                var path = VirtualPathToPath(virtualDirectory);
-
-                LogTo.Trace("Calling Repository.GetDirectory({0}) because {1} is a virtual path.", path, virtualDirectory);
-                return Repository.GetDirectory(path);
-            }
-
-            LogTo.Trace("Calling Previous.GetDirectory({0}) because virtualDirectory is not a virtual path.", virtualDirectory);
-            return Previous.GetDirectory(virtualDirectory);
+            return IsVirtualPath(virtualDirectory) ? Repository.GetDirectory(VirtualPathToPath(virtualDirectory)) : Previous.GetDirectory(virtualDirectory);
         }
 
         /// <summary>
@@ -74,18 +66,7 @@ namespace WebMagic.Repository
         public override VirtualFile GetFile(string virtualPath)
         {
             // Note: Previous.GetFile must called, not base.GetFile.
-            LogTo.Trace("GetFile(virtualPath: {0})", virtualPath);
-
-            if (IsVirtualPath(virtualPath))
-            {
-                var path = VirtualPathToPath(virtualPath);
-
-                LogTo.Trace("Calling Repository.GetFile({0}) because {1} is a virtual path.", path, virtualPath);
-                return Repository.GetFile(path);
-            }
-
-            LogTo.Trace("Calling Previous.GetFile({0}) because virtualPath is not a virtual path.", virtualPath);
-            return Previous.GetFile(virtualPath);
+            return IsVirtualPath(virtualPath) ? Repository.GetFile(VirtualPathToPath(virtualPath)) : Previous.GetFile(virtualPath);
         }
 
         /// <summary>
@@ -98,7 +79,11 @@ namespace WebMagic.Repository
         public override bool FileExists(string virtualPath)
         {
             // Note: Previous.FileExists must called, not base.FileExists.
-            return IsVirtualPath(virtualPath) ? Repository.FileExists(VirtualPathToPath(virtualPath)) : Previous.FileExists(virtualPath);
+            var result = IsVirtualPath(virtualPath) ? Repository.FileExists(VirtualPathToPath(virtualPath)) : Previous.FileExists(virtualPath);
+
+            LogTo.Trace("FileExists({0}) => {1}", virtualPath, result);
+
+            return result;
         }
 
         /// <summary> 
@@ -112,12 +97,20 @@ namespace WebMagic.Repository
         /// </returns> 
         protected virtual bool IsVirtualPath(string virtualPath)
         {
-            return virtualPath.StartsWith("~/");
+            var result =  virtualPath.StartsWith("~/");
+
+            LogTo.Trace("IsVirtualPath({0}) => {1}", virtualPath, result);
+
+            return result;
         }
 
         protected virtual string VirtualPathToPath(string virtualPath)
-        { 
-            return virtualPath.Substring(2).Replace('/', '\\');
+        {
+            var result = virtualPath.Substring(2).Replace('/', '\\');
+
+            LogTo.Trace("VirtualPathToPath({0}) => {1}", virtualPath, result);
+
+            return result;
         }
     }
 }
