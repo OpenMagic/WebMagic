@@ -23,7 +23,7 @@ namespace WebMagic.Repository
         ///     true if the directory exists in the virtual file system; otherwise, false.
         /// </returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public virtual bool DirectoryExists(string directory)
+        public virtual bool DirectoryExists([AllowEmpty] string directory)
         {
             LogTo.Warn("DirectoryExists(directory: {0}) is not supported.", directory);
             return false;
