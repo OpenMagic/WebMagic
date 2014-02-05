@@ -96,6 +96,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Uri extensions.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\WebDirectoryRepository.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebDirectoryRepository.feature</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\DirectoryInfoExtensions.cs" />
     <Compile Include="Infrastructure\ILogExtensions.cs" />
     <Compile Include="Infrastructure\SimpleProfiler.cs" />
@@ -112,6 +117,7 @@
     </Compile>
     <Compile Include="Steps\ServeMarkdownFilesSteps.cs" />
     <Compile Include="Steps\StringExtensionsSteps.cs" />
+    <Compile Include="Steps\WebDirectoryRepositorySteps.cs" />
     <Compile Include="Steps\UriExtensionsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +137,10 @@
     <None Include="Features\Uri extensions.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Uri extensions.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\WebDirectoryRepository.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WebDirectoryRepository.feature.cs</LastGenOutput>
     </None>
     <None Include="Fody.targets" />
     <None Include="Packages.config" />
