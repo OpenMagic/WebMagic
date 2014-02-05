@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Web.Hosting;
 using Anotar.CommonLogging;
-using NullGuard;
 using EmptyStringGuard;
+using NullGuard;
 
 namespace WebMagic.Repository
 {
