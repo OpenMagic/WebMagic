@@ -6,7 +6,12 @@ namespace WebMagic.Repository
     {
         public static void Start(IRepository repository)
         {
-            HostingEnvironment.RegisterVirtualPathProvider(new RepositoryPathProvider(repository));
+            Start(new RepositoryPathProvider(repository));
+        }
+
+        public static void Start(VirtualPathProvider virtualPathProvider)
+        {
+            HostingEnvironment.RegisterVirtualPathProvider(virtualPathProvider);
         }
     }
 }
