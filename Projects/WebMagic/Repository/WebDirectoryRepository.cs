@@ -22,7 +22,7 @@ namespace WebMagic.Repository
         ///     true if the directory exists in the virtual file system; otherwise, false.
         /// </returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public bool DirectoryExists(string directory)
+        public virtual bool DirectoryExists(string directory)
         {
             LogTo.Warn("DirectoryExists(directory: {0}) is not supported.", directory);
             return false;
@@ -38,7 +38,7 @@ namespace WebMagic.Repository
         /// </returns>
         /// <exception cref="System.NotImplementedException"></exception>
         [return: AllowNull]
-        public VirtualDirectory GetDirectory(string directory)
+        public virtual VirtualDirectory GetDirectory(string directory)
         {
             LogTo.Warn("GetDirectory(directory: {0}) is not supported. todo: Why is this being called if DirectoryExists() returns false?", directory);
             return null;
@@ -53,7 +53,7 @@ namespace WebMagic.Repository
         ///     file system.
         /// </returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public VirtualFile GetFile(string path)
+        public virtual VirtualFile GetFile(string path)
         {
             return new RepositoryVirtualFile(path, this);
         }
@@ -66,7 +66,7 @@ namespace WebMagic.Repository
         ///     true if the file exists in the virtual file system; otherwise, false.
         /// </returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public bool FileExists(string path)
+        public virtual bool FileExists(string path)
         {
             var fileName = GetFullPath(path);
             var exists = File.Exists(fileName);
@@ -76,14 +76,14 @@ namespace WebMagic.Repository
             return exists;
         }
 
-        public Stream OpenStream(string path)
+        public virtual Stream OpenStream(string path)
         {
             var fileName = GetFullPath(path);
 
             return File.OpenRead(fileName);
         }
 
-        private string GetFullPath(string path)
+        protected virtual string GetFullPath(string path)
         {
             return Path.Combine(RootDirectory, path);
         }
